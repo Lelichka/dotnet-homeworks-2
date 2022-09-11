@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Hw1;
 using Xunit;
 
 namespace Hw1Tests;
@@ -28,6 +29,7 @@ public class CalculatorMainTests
     [InlineData("q", "+", "1")]
     [InlineData("1", "+", "q")]
     [InlineData("q", "+", "q")]
+    [InlineData("q","/","0")]
     public void TestInvalidArguments(string val1, string operation, string val2)
     {
         var args = new[] { val1, operation};
