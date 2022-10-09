@@ -11,10 +11,32 @@ type CalcOptions = {
 }
 
 let isArgLengthSupported (args : string[]) =
-    NotImplementedException() |> raise
+    args.Length = 3
 
 let parseOperation (arg : string) =
-    NotImplementedException() |> raise
+    match arg with
+        | "+" -> CalculatorOperation.Plus
+        | "-" -> CalculatorOperation.Minus
+        | "*" -> CalculatorOperation.Multiply
+        | "/" -> CalculatorOperation.Divide
+        | _ -> raise(ArgumentException "Unknown operation")
+        
+let parseArgument(str: string)(argNumb:string)  =
+    match Double.TryParse str with
+    | true,arg -> arg
+    | _ -> raise(ArgumentException(argNumb+" argument could not be converted to the double type"))
     
 let parseCalcArguments(args : string[]) =
-    NotImplementedException() |> raise
+    if not (isArgLengthSupported args) then raise(ArgumentException "You have to pass 3 arguments")
+
+    { arg1 = parseArgument args[0] "First"
+      arg2 = parseArgument args[2] "Second"
+      operation = parseOperation args[1] }
+    
+    
+
+    
+    
+    
+    
+
