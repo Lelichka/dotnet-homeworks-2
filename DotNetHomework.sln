@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{82BA
 		.github\coverlet.runsettings = .github\coverlet.runsettings
 	EndProjectSection
 EndProject
+
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework5", "Homework5", "{1F321195-3723-45FB-B142-7532B04DA505}"
 	ProjectSection(SolutionItems) = preProject
 		Homework5\README.md = Homework5\README.md
@@ -21,6 +22,7 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Hw5", "Homework5\Hw5\Hw5.fsproj", "{E1942129-E679-4E2C-BF1E-5334351D624E}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Hw5.Tests", "Homework5\Hw5.Tests\Hw5.Tests.fsproj", "{814746E9-72AE-4BEC-B0F5-36E66A19C896}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
