@@ -1,6 +1,7 @@
 ﻿module Hw6.Parser
 
 open System
+open System.Globalization
 open Hw6.Calculator
 open Hw6.Message
 
@@ -30,8 +31,7 @@ let inline isOperationSupported (arg1, operation, arg2): Result<('a * Calculator
         
 [<System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage>]
 let parseDouble (str:string):Result<Double,string> =
-        let newStr = str.Replace(".",",")
-        match Double.TryParse newStr with
+        match Double.TryParse (str, NumberStyles.Any, CultureInfo.InvariantCulture) with
             | true,value -> Ok value
             | _ -> Error $"Could not parse value '{str}'"
        

@@ -1,6 +1,4 @@
 module Hw6.App
-
-
 open System
 open Hw6.InputValues
 open Hw6.MaybeBuilder
