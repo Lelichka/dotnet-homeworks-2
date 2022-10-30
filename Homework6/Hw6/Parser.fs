@@ -18,7 +18,8 @@ let isArgLengthSupported (args:string[]): Result<'a,'b> =
     match args.Length with
         | 3 -> Ok args
         | _ -> Error ("You must enter 3 args")
-    
+
+[<System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage>]  
 let inline isOperationSupported (arg1, operation, arg2): Result<('a * CalculatorOperation * 'b), string> =
     match operation with
         |Calculator.plus -> Ok (arg1,CalculatorOperation.Plus,arg2)
