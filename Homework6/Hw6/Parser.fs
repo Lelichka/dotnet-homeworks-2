@@ -4,7 +4,7 @@ open System
 open System.Globalization
 open Hw6.Calculator
 open Hw6.Message
-
+[<System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage>]
 let convertMessage message =
     match message with
     | Message.SuccessfulExecution -> "SuccessfulExecution"
@@ -17,7 +17,7 @@ let convertMessage message =
 let isArgLengthSupported (args:string[]): Result<'a,'b> =
     match args.Length with
         | 3 -> Ok args
-        | _ -> Error (convertMessage Message.WrongArgLength)
+        | _ -> Error ("You must enter 3 args")
     
 [<System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage>]
 let inline isOperationSupported (arg1, operation, arg2): Result<('a * CalculatorOperation * 'b), string> =
