@@ -18,7 +18,7 @@ public static class HtmlHelperExtensions
             content.AppendHtmlLine("<div>");
             var displayAttr = property.GetCustomAttribute<DisplayAttribute>();
             var label = (displayAttr == null)
-                ? String.Join(' ', Regex.Split(property.Name, "(?=\\p{Lu})").Where(str => str != " " && str != "").ToArray())
+                ? String.Join(' ', Regex.Split(property.Name, "(?=\\p{Lu})").Where(str => str != "").ToArray())
                 : displayAttr.Name;
             content.AppendHtmlLine($"<label for=\"{property.Name}\">{label}</label><br>");
             CreateInputField(property, ref content, model);
