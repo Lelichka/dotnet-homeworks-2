@@ -32,20 +32,20 @@ public static class HtmlHelperExtensions
     private static void CreateInputField(PropertyInfo property, ref HtmlContentBuilder content,object? model)
     {
         var type = property.PropertyType;
-        var modelValue = (model != null ? $"value=\"{property.GetValue(model)}\"" : "");
+        var value = (model != null)?$"\"{property.GetValue(model)}\"":"";
         if (type.IsEnum)
         {
-            content.AppendHtmlLine($"<select name=\"{property.Name}\" {modelValue}/>");
+            content.AppendHtmlLine($"<select id=\"{property.Name}\" name=\"{property.Name}\" value={value}/>");
             foreach (var enumValue in type.GetEnumValues())
                 content.AppendHtmlLine($"<option>{enumValue}</option>");
             content.AppendHtmlLine("</select>");
         }
         else if (type == typeof(int))
         {
-            content.AppendHtmlLine($"<input id=\"{property.Name}\" type=\"number\" {modelValue}/>");
+            content.AppendHtmlLine($"<input id=\"{property.Name}\" name=\"{property.Name}\" type=\"number\" value={value}>");
         }
         else
-            content.AppendHtmlLine($"<input id=\"{property.Name}\" type=\"text\" {modelValue}/>");
+            content.AppendHtmlLine($"<input id=\"{property.Name}\" name=\"{property.Name}\" type=\"text\" value={value}>");
     }
     private static void Validate(PropertyInfo property, ref HtmlContentBuilder content,object model)
     {

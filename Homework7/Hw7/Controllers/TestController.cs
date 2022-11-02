@@ -13,7 +13,7 @@ public class TestController:Controller
     }
 
     [HttpPost]
-    public IActionResult TestModel([FromForm] TestModel profile)
+    public IActionResult TestModel(TestModel profile)
     {
         return View(profile);
     }
