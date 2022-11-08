@@ -17,9 +17,9 @@ public class Calculator : ICalculator
                 return Multiply(val1, val2);
             case CalculatorOperation.Divide:
                 return Divide(val1, val2);
+            
+            default: throw new InvalidOperationException();
         }
-
-        return 0;
     }
     public double Plus(double val1, double val2) => val1 + val2;
 

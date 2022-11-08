@@ -22,6 +22,19 @@ public class CalculatorTests
         //assert
         Assert.Equal(actual, expResult);
     }
+    
+    [Theory]
+    [InlineData(1, 2)]
+    [InlineData(-5.5, 2)]
+    [InlineData(10, 24.3)]
+    public void UnknownOperation(double val1, double val2)
+    {
+        //arrange
+        ICalculator calculator = new Calculator.Calculator();
+
+        //assert
+        Assert.Throws<InvalidOperationException>(() => calculator.Calculate(val1, CalculatorOperation.Undefined, val2));
+    }
 
     [Theory]
     [InlineData(1, 2, -1)]
