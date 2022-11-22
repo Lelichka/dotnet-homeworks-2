@@ -31,8 +31,8 @@ public class ExpressionTreeVisitor : ExpressionVisitor
 
     private async Task<double[]> CompileAsync(Expression left, Expression right)
     {
-        var leftExpr = Task.Run(async () => { Thread.Sleep(3500); return Expression.Lambda<Func<double>>(left).Compile().Invoke(); });
-        var rightExpr = Task.Run(async () => { Thread.Sleep(3500); return Expression.Lambda<Func<double>>(right).Compile().Invoke(); });
+        var leftExpr = Task.Run(async () => { Thread.Sleep(3000); return Expression.Lambda<Func<double>>(left).Compile().Invoke(); });
+        var rightExpr = Task.Run(async () => { Thread.Sleep(3000); return Expression.Lambda<Func<double>>(right).Compile().Invoke(); });
         return await Task.WhenAll(leftExpr, rightExpr);
     }
 
