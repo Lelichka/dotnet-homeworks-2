@@ -15,8 +15,9 @@ public class ExpressionTreeBuilder
             else
             {
                 var right = stack.Pop();
-                Expression left;
-                if (!stack.TryPop(out left)) left = Expression.Constant((double)0);
+                var left = stack.Pop();
+                
+
                 switch (elem)
                 {
                     case "+" : stack.Push(Expression.Add(left, right)); break;

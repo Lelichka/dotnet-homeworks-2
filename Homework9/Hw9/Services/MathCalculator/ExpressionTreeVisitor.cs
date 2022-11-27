@@ -28,7 +28,6 @@ public class ExpressionTreeVisitor : ExpressionVisitor
                 ExpressionType.Divide => (constRight < Double.Epsilon)
                     ? throw new Exception(MathErrorMessager.DivisionByZero)
                     : constLeft / constRight,
-                _ => throw new Exception(MathErrorMessager.UnknownCharacter)
             };
         }
         return (double)(expression as ConstantExpression).Value;
