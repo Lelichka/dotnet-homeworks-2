@@ -19,17 +19,24 @@ public class ExpressionTreeVisitor : ExpressionVisitor
 
             var constLeft = res[0];
             var constRight = res[1];
-            
-            return (binExpr.NodeType) switch
-            {
-                ExpressionType.Add => constLeft + constRight,
-                ExpressionType.Subtract => constLeft - constRight,
-                ExpressionType.Multiply => constLeft * constRight,
-                ExpressionType.Divide => constRight == 0.0
-                    ? throw new Exception(MathErrorMessager.DivisionByZero)
-                    : constLeft / constRight,
-            };
+
+            return Calculate(binExpr.NodeType, constLeft, constRight);
+
         }
         return (double)(expression as ConstantExpression).Value;
     }
+
+    private static double Calculate(ExpressionType binExpr, double constLeft,double constRight)
+    {
+        return (binExpr) switch
+        {
+            ExpressionType.Add => constLeft + constRight,
+            ExpressionType.Subtract => constLeft - constRight,
+            ExpressionType.Multiply => constLeft * constRight,
+            ExpressionType.Divide => constRight == 0.0
+                ? throw new Exception(MathErrorMessager.DivisionByZero)
+                : constLeft / constRight,
+            _ => throw new Exception(MathErrorMessager.UnknownCharacter)
+        };
+    } 
 }

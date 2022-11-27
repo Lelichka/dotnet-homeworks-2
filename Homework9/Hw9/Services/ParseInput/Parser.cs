@@ -86,11 +86,11 @@ public static class Parser
     {
         return s switch
         {
-            '(' => 0,
             '+' => 2,
             '-' => 3,
             '*' => 4,
-            '/' => 4
+            '/' => 4,
+            _ => 0
         };
     }
     private static bool IsDelimeter(char c)
