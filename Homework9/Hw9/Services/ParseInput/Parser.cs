@@ -24,8 +24,10 @@ public static class Parser
                     i++;
                     if (i == input.Length) break; 
                 }
-                if (minus) output.Append("-"+number) ;
-                else output.Append(number) ;
+                if (minus) 
+                    output.Append($"-{number}");
+                else 
+                    output.Append(number) ;
                 output.Append(" ");
                 i--;
                 minus = false;

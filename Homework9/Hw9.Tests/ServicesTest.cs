@@ -24,6 +24,7 @@ public class ServicesTest : IClassFixture<WebApplicationFactory<Program>>
 	[InlineData("(-3) - (-4)", "-3 -4 - ")]
 	[InlineData("(-2 + 2)", "-2 2 + ")]
 	[InlineData("-1 - (-1)", "-1 -1 - ")]
+	[InlineData("1 - 1 - 2)", "1 1 - 2 - ")]
 	public async Task ParseToPosrfixForm(string expression, string result)
 	{
 		var response = Parser.ConvertToPostfixForm(expression);
