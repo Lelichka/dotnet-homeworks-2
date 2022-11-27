@@ -87,7 +87,6 @@ public static class Parser
         return s switch
         {
             '(' => 0,
-            ')' => 1,
             '+' => 2,
             '-' => 3,
             '*' => 4,

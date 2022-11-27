@@ -25,7 +25,7 @@ public class ExpressionTreeVisitor : ExpressionVisitor
                 ExpressionType.Add => constLeft + constRight,
                 ExpressionType.Subtract => constLeft - constRight,
                 ExpressionType.Multiply => constLeft * constRight,
-                ExpressionType.Divide => (constRight < Double.Epsilon)
+                ExpressionType.Divide => constRight == 0.0
                     ? throw new Exception(MathErrorMessager.DivisionByZero)
                     : constLeft / constRight,
             };
