@@ -17,7 +17,8 @@ public class MathCalculatorService : IMathCalculatorService
             Validator.Validate(expression);
             var parseResult = Parser.ConvertToPostfixForm(expression);
             var exprTree = ExpressionTreeBuilder.CreateExpressionTree(parseResult);
-            var result = Expression.Lambda<Func<double>>(await new ExpressionTreeVisitor().CreateCalcExpr(exprTree)).Compile().Invoke();
+            var result = 
+                await ExpressionTreeVisitor.VisitAsync(exprTree);
             return new CalculationMathExpressionResultDto(result);
         }
         catch(Exception ex)

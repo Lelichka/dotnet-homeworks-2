@@ -7,33 +7,30 @@ namespace Hw9.Services.ExpressionTree;
 
 public class ExpressionTreeVisitor : ExpressionVisitor
 {
-    protected override Expression VisitBinary(BinaryExpression node)
+    async public static Task<double> VisitAsync(Expression expression)
     {
-        var res = CompileAsync(node.Left, node.Right).Result;
-        return node.NodeType switch
+        if (expression is BinaryExpression)
         {
-            ExpressionType.Add => Expression.Add(Expression.Constant(res[0]), Expression.Constant(res[1])),
-            ExpressionType.Subtract => Expression.Subtract(Expression.Constant(res[0]), Expression.Constant(res[1])),
-            ExpressionType.Multiply => Expression.Multiply(Expression.Constant(res[0]), Expression.Constant(res[1])),
-            _ => res[1] != 0.0
-                ? Expression.Divide(node.Left, node.Right)
-                : throw new Exception(MathErrorMessager.DivisionByZero)
-        };
+            var binExpr = expression as BinaryExpression;
+            await Task.Delay(1000);
+            var leftExpr = Task.Run(() => VisitAsync(binExpr.Left));
+            var rightExpr = Task.Run(() => VisitAsync(binExpr.Right));
+            var res = await Task.WhenAll(leftExpr, rightExpr);
+
+            var constLeft = res[0];
+            var constRight = res[1];
+            
+            return (binExpr.NodeType) switch
+            {
+                ExpressionType.Add => constLeft + constRight,
+                ExpressionType.Subtract => constLeft - constRight,
+                ExpressionType.Multiply => constLeft * constRight,
+                ExpressionType.Divide => (constRight < Double.Epsilon)
+                    ? throw new Exception(MathErrorMessager.DivisionByZero)
+                    : constLeft / constRight,
+                _ => throw new Exception(MathErrorMessager.UnknownCharacter)
+            };
+        }
+        return (double)(expression as ConstantExpression).Value;
     }
-
-    public Task<Expression> CreateCalcExpr(Expression expr) =>
-        Task.Run(() => base.Visit(expr));
-
-    protected override Expression VisitConstant(ConstantExpression node)
-    {
-        return node;
-    }
-
-    private async Task<double[]> CompileAsync(Expression left, Expression right)
-    {
-        var leftExpr = Task.Run(async () => { Thread.Sleep(3000); return Expression.Lambda<Func<double>>(left).Compile().Invoke(); });
-        var rightExpr = Task.Run(async () => { Thread.Sleep(3000); return Expression.Lambda<Func<double>>(right).Compile().Invoke(); });
-        return await Task.WhenAll(leftExpr, rightExpr);
-    }
-
 }

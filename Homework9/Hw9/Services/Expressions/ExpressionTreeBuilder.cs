@@ -25,7 +25,6 @@ public class ExpressionTreeBuilder
                     case "/" : stack.Push(Expression.Divide(left, right)); break;
                 }
             }
-            
         }
         return stack.Pop();
     }
