@@ -26,7 +26,7 @@ public class ExpressionTreeVisitor : ExpressionVisitor
         return (double)(expression as ConstantExpression).Value;
     }
 
-    private static double Calculate(ExpressionType binExpr, double constLeft,double constRight)
+    public static double Calculate(ExpressionType binExpr, double constLeft,double constRight)
     {
         return (binExpr) switch
         {
