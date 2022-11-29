@@ -17,6 +17,13 @@ public class MathCachedCalculatorService : IMathCalculatorService
 
 	public async Task<CalculationMathExpressionResultDto> CalculateMathExpressionAsync(string? expression)
 	{
-		throw new NotImplementedException();
+		var cache = _dbContext.SolvingExpressions.FirstOrDefault(SolvExpr => SolvExpr.Expression == expression);
+		if (cache != null)
+			return new CalculationMathExpressionResultDto(cache.Result);
+		var calculated =  await _simpleCalculator.CalculateMathExpressionAsync(expression);
+		if (!calculated.IsSuccess) return calculated;
+		_dbContext.SolvingExpressions.Add(new SolvingExpression(expression!, calculated.Result));
+		await _dbContext.SaveChangesAsync();
+		return calculated;
 	}
-}
+};
