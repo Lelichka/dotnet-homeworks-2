@@ -46,7 +46,7 @@ public class ServicesTest : IClassFixture<WebApplicationFactory<Program>>
 	[Fact]
 	async Task ExpressionVisitorUnknownExpressionTest()
 	{
-		var expr = Expression.Empty();
+		var expr = Expression.Increment(Expression.Constant(1));
 		
 		var response = () => ExpressionTreeVisitor.VisitExpression(expr);
 		var exception = Assert.ThrowsAsync(typeof(InvalidOperationException),response);

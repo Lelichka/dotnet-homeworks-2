@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Hw11.ErrorMessages;
@@ -8,6 +9,7 @@ namespace Hw11.Services.ExpressionTree;
 
 public class ExpressionTreeVisitor
 {
+    [ExcludeFromCodeCoverage]
     public static async Task<double> VisitExpression(Expression expr)
     {
         return await Visit((dynamic)expr);
