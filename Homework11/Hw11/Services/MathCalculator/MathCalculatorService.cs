@@ -6,11 +6,11 @@ namespace Hw11.Services.MathCalculator;
 
 public class MathCalculatorService : IMathCalculatorService
 {
-    public async Task<double> CalculateMathExpressionAsync(string? expression)
+    public Task<double> CalculateMathExpressionAsync(string? expression)
     {
         Validator.Validate(expression);
         var parseResult = Parser.ConvertToPostfixForm(expression);
         var exprTree = ExpressionTreeBuilder.CreateExpressionTree(parseResult);
-        return await ExpressionTreeVisitor.VisitExpression((dynamic)exprTree);
+        return ExpressionTreeVisitor.VisitExpression((dynamic)exprTree);
     }
 }
