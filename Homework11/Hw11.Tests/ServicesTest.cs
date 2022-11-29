@@ -42,5 +42,13 @@ public class ServicesTest : IClassFixture<WebApplicationFactory<Program>>
 		var exception = Assert.Throws<InvalidSymbolException>(response);
 		Assert.Equal(MathErrorMessager.UnknownCharacter, exception.Message);
 	}
-
+	
+	[Fact]
+	async Task ExpressionVisitorUnknownExpressionTest()
+	{
+		var expr = Expression.Empty();
+		
+		var response = () => ExpressionTreeVisitor.VisitExpression(expr);
+		var exception = Assert.ThrowsAsync(typeof(InvalidOperationException),response);
+	}
 }
