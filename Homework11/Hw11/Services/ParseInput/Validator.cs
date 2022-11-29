@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using Hw11.Exceptions;
 
 namespace Hw11.Services;
 using Hw11.ErrorMessages;
@@ -8,22 +9,22 @@ public static class Validator
     {
         
         if (string.IsNullOrEmpty(input))
-            throw  new Exception(MathErrorMessager.EmptyString);
+            throw  new InvalidSyntaxException(MathErrorMessager.EmptyString);
         if (!CheckCorrectParenthesis(input))
-            throw  new Exception(MathErrorMessager.IncorrectBracketsNumber);
+            throw  new InvalidSyntaxException(MathErrorMessager.IncorrectBracketsNumber);
         
         foreach (var c in input.Where(c => 
                      !char.IsDigit(c) && !new[] { '+', '-', '*', '/', '(', ')', '.', ' ' }.Contains(c)))
-            throw new Exception(MathErrorMessager.UnknownCharacterMessage(c));
+            throw new InvalidSymbolException(MathErrorMessager.UnknownCharacterMessage(c));
         
         var array = new Regex("(?<=[-+*/()])|(?=[-+*/()])").Split(input.Replace(" ", ""))
             .Where(c => c != "").ToArray();
         
         if (!double.TryParse(input[0].ToString(), out _ ) && !new[] { "-", "(" }.Contains(input[0].ToString()))
-            throw new Exception(MathErrorMessager.StartingWithOperation);
+            throw new InvalidSyntaxException(MathErrorMessager.StartingWithOperation);
         
         if (!double.TryParse(input[^1].ToString(), out _ ) && array[^1] != ")")
-            throw new Exception(MathErrorMessager.EndingWithOperation);
+            throw new InvalidSyntaxException(MathErrorMessager.EndingWithOperation);
 
         var lastElem = "";
         var lastOperation = true;
@@ -35,7 +36,7 @@ public static class Validator
                 lastElem = array[i];
                 lastOperation = false;
                 if (!double.TryParse(array[i], out _))
-                    throw new Exception(MathErrorMessager.NotNumberMessage(array[i]));
+                    throw new InvalidNumberException(MathErrorMessager.NotNumberMessage(array[i]));
                 continue;
             }
 
@@ -56,7 +57,7 @@ public static class Validator
                 case ")":
                 {
                     if (lastOperation)
-                        throw new Exception(MathErrorMessager.OperationBeforeParenthesisMessage(lastElem));
+                        throw new InvalidSyntaxException(MathErrorMessager.OperationBeforeParenthesisMessage(lastElem));
                     lastElem = array[i];
                     lastOperation = false;
                     continue;
@@ -66,8 +67,8 @@ public static class Validator
             if (lastOperation)
             {
                 if (lastElem == "(")
-                    throw new Exception(MathErrorMessager.InvalidOperatorAfterParenthesisMessage(array[i]));
-                throw new Exception(MathErrorMessager.TwoOperationInRowMessage(lastElem, array[i]));
+                    throw new InvalidSyntaxException(MathErrorMessager.InvalidOperatorAfterParenthesisMessage(array[i]));
+                throw new InvalidSyntaxException(MathErrorMessager.TwoOperationInRowMessage(lastElem, array[i]));
             }
 
             lastElem = array[i];

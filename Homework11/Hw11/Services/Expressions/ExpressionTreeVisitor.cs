@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Hw11.ErrorMessages;
+using Hw11.Exceptions;
 
 namespace Hw11.Services.ExpressionTree;
 
@@ -37,9 +38,9 @@ public class ExpressionTreeVisitor
             ExpressionType.Subtract => constLeft - constRight,
             ExpressionType.Multiply => constLeft * constRight,
             ExpressionType.Divide => constRight == 0.0
-                ? throw new Exception(MathErrorMessager.DivisionByZero)
+                ? throw new DivideByZeroException(MathErrorMessager.DivisionByZero)
                 : constLeft / constRight,
-            _ => throw new Exception(MathErrorMessager.UnknownCharacter)
+            _ => throw new InvalidSymbolException(MathErrorMessager.UnknownCharacter)
         };
     } 
 }

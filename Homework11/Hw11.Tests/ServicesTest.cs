@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using System.Net.Http.Json;
 using Hw11.Dto;
 using Hw11.ErrorMessages;
+using Hw11.Exceptions;
 using Hw11.Services;
 using Hw11.Services.ExpressionTree;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -38,9 +39,8 @@ public class ServicesTest : IClassFixture<WebApplicationFactory<Program>>
 	async Task ExpressionVisitorCalculateTest(ExpressionType expressionType, double first,double second)
 	{
 		var response = () => (object)ExpressionTreeVisitor.Calculate(expressionType,first,second);
-		var exception = Assert.Throws<Exception>(response);
+		var exception = Assert.Throws<InvalidSymbolException>(response);
 		Assert.Equal(MathErrorMessager.UnknownCharacter, exception.Message);
 	}
 
-	
 }

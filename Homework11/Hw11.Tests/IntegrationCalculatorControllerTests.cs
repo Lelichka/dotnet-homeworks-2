@@ -60,4 +60,6 @@ public class IntegrationCalculatorControllerTests : IClassFixture<WebApplication
 		var response = await _client.PostCalculateExpressionAsync(expression);
 		return await response.Content.ReadFromJsonAsync<CalculationMathExpressionResultDto>();
 	}
+	
+	
 }
