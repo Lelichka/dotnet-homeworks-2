@@ -61,14 +61,15 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Hw5", "Homework5\Hw5\Hw5.fsproj", "{E1942129-E679-4E2C-BF1E-5334351D624E}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Hw5.Tests", "Homework5\Hw5.Tests\Hw5.Tests.fsproj", "{814746E9-72AE-4BEC-B0F5-36E66A19C896}"
-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework6", "Homework6", "{E16D4D1E-F9D7-4566-8439-E4A063CFAFAD}"
 	ProjectSection(SolutionItems) = preProject
-		Homework11\README.md = Homework11\README.md
+		Homework6\README.md = Homework6\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw11Tests", "Homework11\Hw11.Tests\Hw11Tests.csproj", "{B4F60DFD-034F-4205-BC6B-692F276B414B}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Hw6", "Homework6\Hw6\Hw6.fsproj", "{3B6B82C5-ACA8-4128-86CB-1EECC9D3B6BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw6Tests", "Homework6\Hw6.Tests\Hw6Tests.csproj", "{9A993124-7262-48FA-8FAB-A8EABA119947}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ConsoleClient", "Homework6\ConsoleClient\ConsoleClient.fsproj", "{0CC205A5-8C0A-4F34-8173-6C8E388FEF8B}"
 EndProject
