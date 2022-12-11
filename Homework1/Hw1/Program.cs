@@ -1,5 +1,4 @@
-﻿using System.Xml;
-using Hw1;
+﻿using Hw1;
 
 public class Program
 {
