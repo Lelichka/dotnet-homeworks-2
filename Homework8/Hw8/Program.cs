@@ -14,6 +14,7 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddSingleton<ICalculator, Calculator.Calculator>();
         builder.Services.AddSingleton<IParser, Parser>();
+        builder.Services.AddMiniProfiler();
 
         var app = builder.Build();
 
@@ -28,6 +29,7 @@ public class Program
 
         app.UseRouting();
         app.UseAuthorization();
+        app.UseMiniProfiler();
 
         app.MapControllerRoute(
             name: "default",
