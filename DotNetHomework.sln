@@ -14,6 +14,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "actions", "actions", "{82BA
 	EndProjectSection
 EndProject
 
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework12", "Homework12", "{F76958C8-AD2F-4006-80AF-D7A466020AD3}"
+	ProjectSection(SolutionItems) = preProject
+		Homework12\README.md = Homework12\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw12", "Homework12\Hw12\Hw12.csproj", "{93E929A3-EF7A-481E-94C2-47AEB416A7A9}"
+
+
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw1", "Homework1\Hw1\Hw1.csproj", "{4C0DB98A-6B41-4E8E-9558-1346F0CC64C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw1Tests", "Homework1\Hw1.Tests\Hw1.Tests.csproj", "{2F7338C0-6535-4E98-894D-57AC5EF8E1C4}"
@@ -124,6 +133,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw13", "Homework13\Hw.13\Hw13.csproj", "{55A6CAA6-16E2-474E-8882-62BCF3712CA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hw13.Tests", "Homework13\Hw13.Tests\Hw13.Tests.csproj", "{7C271E66-7D98-40E0-8A39-5FDC8FBADE4B}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -236,6 +246,11 @@ Global
 		{7C271E66-7D98-40E0-8A39-5FDC8FBADE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C271E66-7D98-40E0-8A39-5FDC8FBADE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C271E66-7D98-40E0-8A39-5FDC8FBADE4B}.Release|Any CPU.Build.0 = Release|Any CPU
+
+    {93E929A3-EF7A-481E-94C2-47AEB416A7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93E929A3-EF7A-481E-94C2-47AEB416A7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93E929A3-EF7A-481E-94C2-47AEB416A7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93E929A3-EF7A-481E-94C2-47AEB416A7A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
@@ -266,6 +281,8 @@ Global
 		{D3503703-6227-4A49-A937-F20DB5BAD636} = {E23FEF3D-D7C9-4FF6-AFB2-2CFF382F35D5}
     {55A6CAA6-16E2-474E-8882-62BCF3712CA7} = {C7D8B4A4-35B9-4D97-A54F-8DD80BC30E38}
 		{7C271E66-7D98-40E0-8A39-5FDC8FBADE4B} = {C7D8B4A4-35B9-4D97-A54F-8DD80BC30E38}
+
+    {93E929A3-EF7A-481E-94C2-47AEB416A7A9} = {F76958C8-AD2F-4006-80AF-D7A466020AD3}
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
