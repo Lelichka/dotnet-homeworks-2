@@ -1,10 +1,12 @@
+using System.Diagnostics.CodeAnalysis;
 using Hw10.DbModels;
 using Hw10.Services;
 using Hw10.Services.CachedCalculator;
 using Hw10.Services.MathCalculator;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Hw10.Configuration;
-
+[ExcludeFromCodeCoverage]
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddMathCalculator(this IServiceCollection services)
@@ -16,7 +18,7 @@ public static class ServiceCollectionExtensions
     {
         return services.AddScoped<IMathCalculatorService>(s =>
             new MathCachedCalculatorService(
-                s.GetRequiredService<ApplicationContext>(), 
+                s.GetRequiredService<IMemoryCache>(), 
                 s.GetRequiredService<MathCalculatorService>()));
     }
 }
